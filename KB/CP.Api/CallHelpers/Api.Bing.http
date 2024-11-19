@@ -1,0 +1,13 @@
+# general health check
+GET {{api-baseuri}}/health
+Accept: application/json
+
+### check data health
+
+GET {{api-baseuri}}/bing/health
+Accept: application/json
+
+### basic search with API key
+GET {{api-baseuri}}/bing/search/{{search-term}}
+Accept: application/json
+X-Api-Key: {{api-key}}

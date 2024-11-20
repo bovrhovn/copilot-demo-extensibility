@@ -28,7 +28,20 @@ public class DataController(ILogger<DataController> logger, AzureSearchService s
     public async Task<IActionResult> SearchDataAsync(string query)
     {
         logger.LogInformation("Called search endpoint at {DateCalled} with {Query}", DateTime.UtcNow, query);
-        await searchService.SearchAsync(query);
-        return Ok(query);
+        var data = await searchService.SearchAsync(query);
+        logger.LogInformation("Returning {Count} search results for {Query}", data.Count, query);
+        return Ok(data);
+    }
+    
+    [HttpGet]
+    [Route(RouteHelper.SearchVectorRoute+ "/{query}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ServiceFilter(typeof(ApiKeyAuthFilter))]
+    public async Task<IActionResult> SearchVectorDataAsync(string query)
+    {
+        logger.LogInformation("Called search endpoint at {DateCalled} with {Query}", DateTime.UtcNow, query);
+        var data = await searchService.SearchVectorDataAsync(query);
+        logger.LogInformation("Returning {Count} search results for {Query} based on vector data", data.Count, query);
+        return Ok(data);
     }
 }

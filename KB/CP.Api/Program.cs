@@ -15,6 +15,10 @@ builder.Services.AddOptions<AuthOptions>()
     .Bind(builder.Configuration.GetSection(SettingsNameHelper.AuthOptionsSectionName));
 builder.Services.AddOptions<BingOptions>()
     .Bind(builder.Configuration.GetSection(SettingsNameHelper.BingOptionsSectionName));
+builder.Services.AddOptions<SearchOptions>()
+    .Bind(builder.Configuration.GetSection(SettingsNameHelper.SearchOptionsSectionName));
+builder.Services.AddOptions<AOAIOptions>()
+    .Bind(builder.Configuration.GetSection(SettingsNameHelper.AzureOpenAiOptionsSectionName));
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);;
 builder.Services.AddOpenApi();

@@ -12,3 +12,9 @@ Accept: application/json
 GET {{api-baseuri}}/data/search/{{search-term}}
 Accept: application/json
 X-Api-Key: {{api-key}}
+
+### vector search with API key
+
+GET {{api-baseuri}}/data/search-vector/{{search-term}}
+Accept: application/json
+X-Api-Key: {{api-key}}

@@ -10,4 +10,5 @@ public class SearchOptions
     public required string Endpoint { get; init; }
     [Required(ErrorMessage = "Index must be defined")] 
     public required string IndexName { get; init; }
+    public int RecordSize { get; set; } = 50;
 }

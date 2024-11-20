@@ -4,8 +4,8 @@ namespace CP.Api.Models;
 
 public class SearchResult
 {
-    [SimpleField(IsKey = true)]
-    public required string Id { get; set; }
+    [SimpleField(IsKey = true, IsFilterable = true)]
+    public string Id { get; set; }
     [SearchableField(IsFilterable = true)]
     public string Title { get; set; }
     [SearchableField(IsFilterable = false)]

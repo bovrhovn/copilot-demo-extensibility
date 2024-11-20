@@ -46,11 +46,11 @@ public class AzureSearchService(
             var currentSearchOptions = new Azure.Search.Documents.SearchOptions
             {
                 IncludeTotalCount = true,
-                Size = 10,
+                Size = 50,
                 SearchFields = { "title", "chunk" },
                 Select = { "id","title","location","chunk" }
             };
-            var response = await searchClient.SearchAsync<SearchResult>(query, currentSearchOptions);
+            var response = await searchClient.SearchAsync<KBSearchResult>(query, currentSearchOptions);
             await foreach (var result in response.Value.GetResultsAsync())
             {
                 var currentSearchResult = result.Document;
@@ -90,7 +90,7 @@ public class AzureSearchService(
         {
             var vectorizedResult = GetEmbeddings(query);
 
-            var response = await searchClient.SearchAsync<SearchResult>(
+            var response = await searchClient.SearchAsync<KBSearchResult>(
                 new Azure.Search.Documents.SearchOptions
                 {
                     VectorSearch = new VectorSearchOptions
@@ -100,7 +100,8 @@ public class AzureSearchService(
                             new VectorizedQuery(vectorizedResult)
                                 { KNearestNeighborsCount = 3, Fields = { "chunkVector" } }
                         }
-                    }
+                    },
+                    Size = 50
                 });
 
             await foreach (var result in response.Value.GetResultsAsync())

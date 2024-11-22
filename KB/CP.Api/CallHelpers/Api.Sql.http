@@ -8,6 +8,23 @@ GET {{api-baseuri}}/{{virtual-path}}/health
 Accept: application/json
 
 ### basic search with API key
+
 GET {{api-baseuri}}/{{virtual-path}}/search/{{search-term}}
 Accept: application/json
 X-Api-Key: {{api-key}}
+
+### get all categories
+
+GET {{api-baseuri}}/{{virtual-path}}/categories
+Accept: application/json
+X-Api-Key: {{api-key}}
+
+### get all knowledge bases
+
+GET {{api-baseuri}}/{{virtual-path}}/kb
+Accept: application/json
+X-Api-Key: {{api-key}}
+
+
+
+

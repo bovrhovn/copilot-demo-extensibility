@@ -19,6 +19,8 @@ builder.Services.AddOptions<SearchOptions>()
     .Bind(builder.Configuration.GetSection(SettingsNameHelper.SearchOptionsSectionName));
 builder.Services.AddOptions<AOAIOptions>()
     .Bind(builder.Configuration.GetSection(SettingsNameHelper.AzureOpenAiOptionsSectionName));
+builder.Services.AddOptions<SqlOptions>()
+    .Bind(builder.Configuration.GetSection(SettingsNameHelper.SqlOptionsSectionName));
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);;
 builder.Services.AddOpenApi();

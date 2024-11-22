@@ -4,17 +4,17 @@ Accept: application/json
 
 ### check data health
 
-GET {{api-baseuri}}/data/health
+GET {{api-baseuri}}/{{virtual-path}}/health
 Accept: application/json
 
 ### basic search with API key
 
-GET {{api-baseuri}}/data/search/{{search-term}}
+GET {{api-baseuri}}/{{virtual-path}}/search/{{search-term}}
 Accept: application/json
 X-Api-Key: {{api-key}}
 
 ### vector search with API key
 
-GET {{api-baseuri}}/data/search-vector/{{search-term}}
+GET {{api-baseuri}}/{{virtual-path}}/search-vector/{{search-term}}
 Accept: application/json
 X-Api-Key: {{api-key}}

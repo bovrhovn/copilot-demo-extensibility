@@ -7,4 +7,5 @@ public static class SettingsNameHelper
     public const string BingOptionsSectionName = "BingOptions";
     public const string SearchOptionsSectionName = "SearchOptions";
     public const string AzureOpenAiOptionsSectionName = "AzureOpenAIOptions";
+    public const string SqlOptionsSectionName = "SqlOptions";
 }

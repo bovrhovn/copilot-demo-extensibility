@@ -23,7 +23,10 @@ public class SqlController(
     [HttpGet]
     [Route(RouteHelper.GetCategoriesRoute)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ServiceFilter(typeof(ApiKeyAuthFilter))]
+    [EndpointSummary("This gets all categories in database.")]
+    [EndpointDescription("This calls Azure SQL and gets all categories in database.")]
+    [Produces(typeof(List<Category>))]
+    //[ServiceFilter(typeof(ApiKeyAuthFilter))]
     public async Task<IActionResult> GetCategoriesAsync()
     {
         logger.LogInformation("Called categories endpoint at {DateCalled}", DateTime.UtcNow);
@@ -37,7 +40,10 @@ public class SqlController(
     [HttpGet]
     [Route(RouteHelper.GetKbRoute)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ServiceFilter(typeof(ApiKeyAuthFilter))]
+    [EndpointSummary("This gets all knowledge data in SQL database.")]
+    [EndpointDescription("This calls Azure SQL and gets all knowledge data in database.")]
+    [Produces(typeof(List<KBSearchResult>))]
+    //[ServiceFilter(typeof(ApiKeyAuthFilter))]
     public async Task<IActionResult> GetKnowledgeBaseAsync()
     {
         logger.LogInformation("Called knowledge base endpoint at {DateCalled}", DateTime.UtcNow);
@@ -52,7 +58,11 @@ public class SqlController(
     [HttpGet]
     [Route(RouteHelper.SearchRoute + "/{query}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ServiceFilter(typeof(ApiKeyAuthFilter))]
+    //[ServiceFilter(typeof(ApiKeyAuthFilter))]
+    [EndpointSummary("This searches all knowledge data in SQL database.")]
+    [EndpointDescription(
+        "This searches Azure SQL and gets all knowledge data in database. If query is empty, returns all.")]
+    [Produces(typeof(List<KBSearchResult>))]
     public async Task<IActionResult> SearchDataAsync(string query)
     {
         logger.LogInformation("Called search endpoint at {DateCalled} with {Query}", DateTime.UtcNow, query);
@@ -69,6 +79,9 @@ public class SqlController(
 
     [HttpGet]
     [Route(RouteHelper.HealthRoute)]
+    [EndpointSummary("This calling health check with SQL.")]
+    [EndpointDescription(
+        "This calls Azure SQL and determines if the SQL connection is valid. If yes, returns 200, otherwise 400.")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> IsAlive()

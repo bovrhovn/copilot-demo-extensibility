@@ -7,6 +7,11 @@ Accept: application/json
 GET {{api-baseuri}}/{{virtual-path}}/health
 Accept: application/json
 
+### get openapi specification
+
+GET {{api-baseuri}}/openapi/v1.json
+Accept: application/json
+
 ### basic search with API key
 
 GET {{api-baseuri}}/{{virtual-path}}/search/{{search-term}}
